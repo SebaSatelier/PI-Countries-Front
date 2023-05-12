@@ -1,9 +1,21 @@
-
+import { CardsContainer, OrderAndFilter, Paginated } from "../../Components";
+import { useDispatch } from 'react-redux';
+import { getAllCountries } from '../../Redux/countryActions';
+import { useEffect } from "react";
+import style from './Home.module.css'
 
 const Home = () => {
+    const dispatch = useDispatch();
+  
+    useEffect(()=>{
+        dispatch(getAllCountries())
+    },[])
     return (
         <div>
-            <h1> Landingggg</h1>
+            <OrderAndFilter />
+            <CardsContainer/>
+            <Paginated/>
+
         </div>
     )
 }

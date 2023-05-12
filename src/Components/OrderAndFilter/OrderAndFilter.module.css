@@ -1,0 +1,14 @@
+.OrderFilter {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    height: 40px;
+    margin: 10px;
+    border: black solid 1px
+}
+
+.OrderFilter div{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}

@@ -1,10 +1,30 @@
+import Card from '../Card/Card'
+import { useSelector } from 'react-redux';
+import style from './CardsContainer.module.css'
 
-const Landing = () => {
+
+const CardsContainer = () => {
+    const {countries, currentPage} = useSelector(state => state)
+
+    let firstCountry = (currentPage-1) * 10;
+    let lastCountry = currentPage * 10;
+
+    let viewCountries = countries.slice(firstCountry,lastCountry)
+
     return (
-        <div>
-            <h1> Landingggg</h1>
+        <div className={style.container}>
+            {viewCountries.map(country => {
+                return <Card
+                key={country.id}
+                id={country.id}
+                name={country.name}
+                flag={country.flag}
+                continent={country.continent}
+                />
+
+            })}
         </div>
     )
 }
 
-export default Landing;
+export default CardsContainer;

@@ -1,6 +1,6 @@
-import Landing from "./LandinPage/Landing";
+import Landing from './LandinPage/Landing';
 
-import Home from "./Home/Home";
+import Home from './Home/Home';
 
 import Form from './Form/Form';
 
