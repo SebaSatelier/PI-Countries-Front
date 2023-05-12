@@ -21,7 +21,7 @@ const OrderAndFilter = ()=>{
 
     const {allCountries} = useSelector(state=> state)
 
-    let allActivities = allCountries.map(country => country.activities).flat().map(activity => activity.name)
+    let allActivities = allCountries.map(country => country.activities).flat().map(activity => activity?.name)
    
 
     let activities = allActivities.filter((value, index) => allActivities.indexOf(value) === index);

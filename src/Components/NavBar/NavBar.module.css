@@ -1,7 +1,19 @@
 .Navbar {
     display: flex;
     justify-content:space-between;
+    align-items: center;
     height: 40px;
     margin: 10px;
     border: black solid 1px
+}
+
+.Navbar button  {
+    border: none;
+    background: none;
+
+}
+
+.Navbar button:hover{
+    background-color: gray;
+    cursor: auto;
 }

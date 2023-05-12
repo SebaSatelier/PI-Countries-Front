@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {loginValidation} from '../../Utils/Validation'
+import style from './Login.module.css'
 
 const Login = ({login}) => {
 
@@ -37,20 +38,29 @@ const Login = ({login}) => {
 
     return(
 
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit} className={style.form}>
+                <h3>Please, enter your credencials</h3>
                 <div >
-                    <label htmlFor="email">Email: </label>
-                    <input  type="email" value={userData.email} placeholder='Ingrese su email' onChange={handleChange} name='email'/>
+                    <label htmlFor="email">Email</label>
+                </div>
+
+                <div>
+                    <input  type="email" value={userData.email} placeholder='Your Email' onChange={handleChange} name='email'/>
                     {errors.email && <p>{errors.email}</p>}
                 </div>
 
                 <div >
                     <label htmlFor="password">Password</label>
-                    <input type="password" value={userData.password} placeholder='Ingrese su password' onChange={handleChange} name='password'/>
+                </div>
+
+                <div>
+                    <input type="password" value={userData.password} placeholder='Your Password' onChange={handleChange} name='password'/>
                     {errors.password && <p>{errors.password}</p>}
                 </div>
 
                 <button disabled={buttonDisable(userData,errors)}>Sing in</button>
+
+                <h3>or</h3>
             </form>
 
     )

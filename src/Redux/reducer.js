@@ -70,7 +70,7 @@ const reducer = (state = initialState, action) => {
             };
 
         case FILTER_BY_ACTIVITY:
-            const copyAllCountries = [...state.countries]
+            const copyAllCountries = [...state.allCountries]
             if(action.payload === "All"){
                 return{
                     ...state,
@@ -82,7 +82,7 @@ const reducer = (state = initialState, action) => {
                 countries: copyAllCountries.filter(country => country.activities.some(activity => activity.name === action.payload))
             }
         case FILTER_BY_CONTINENT:
-            const copyOfCountries = [...state.countries]
+            const copyOfCountries = [...state.allCountries]
             if(action.payload === "All"){
                 return{
                     ...state,

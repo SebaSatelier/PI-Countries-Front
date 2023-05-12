@@ -1,7 +1,9 @@
 body {
-    background-image: url('./Utils/Images/global-network-connection-world-map-point_41981-647.avif');
-    background-size: cover;
+    background-image: url('./Utils/Images/d64b989e569519f1cbd64a60a57b98dd.jpg');
+    background-size:cover;
+    background-position: center;
     margin: 0;
+    padding: 0;
 }
 
 code {

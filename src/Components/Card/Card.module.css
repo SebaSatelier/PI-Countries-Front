@@ -2,23 +2,24 @@
 
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: 240px;
         height: 280px;
         border: black solid 2px;
         border-radius: 15px;
         margin-left: 15px;
         margin-top: 10px;
-        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2);
-    
+        box-shadow: 100px 100px 102px rgba(0, 0, 0, 0.2);
+        background-color: rgb(240, 240, 240);
+        color: black
     }
 
 .container img {
     width: 190px;
     height: 140px;
-    align-self: center;
+    margin-top: 5px;
 }    
 
 .navlink{
     text-decoration: none;
-
 }

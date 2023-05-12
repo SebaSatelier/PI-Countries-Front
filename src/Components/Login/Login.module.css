@@ -1,0 +1,22 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 290px;
+    height: 200px;
+    align-items: center;
+}
+.form > div label{
+    margin-top: 5px;
+
+}
+
+.form > div input{
+    margin-top: 5px;
+    border-radius: 5px;
+    height: 20px;
+    width: 200px;
+}
+
+.form > div p{
+    margin: 2px;
+}

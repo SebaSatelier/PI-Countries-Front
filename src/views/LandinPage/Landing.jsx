@@ -8,15 +8,19 @@ const Landing = ({login}) => {
 
     return (
             <div className={style.landing}>
-                <div>
-                    {!openRegister && <Login login= {login}/>}
+                    <div className={style.SingIn}>
+                        {!openRegister && <Login login= {login} />}
 
-                    {!openRegister && <button onClick={() => setOpenRegister(true)}>Sing up</button>}
+                    {!openRegister && <button onClick={() => setOpenRegister(true)} className={style.buttonSingUp}>
+                                        SING UP
+                                    </button>}
+
 
                     {openRegister && <Register setOpenRegister={setOpenRegister}/>}
+                    </div>
 
-                    
-                </div>
+
+                <div className={style.container}></div>
             </div>
     )
 }
