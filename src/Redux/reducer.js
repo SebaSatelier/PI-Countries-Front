@@ -1,7 +1,6 @@
-import { all } from 'axios';
 import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME,
 POST_ACTIVITY, GET_ACTIVITIES, DELETE_ACTIVITY, UPDATE_ACTIVITY, NEXT_PAGE,PREV_PAGE,
-ORDER,FILTER_BY_ACTIVITY,FILTER_BY_CONTINENT} from './action-types'
+ORDER,FILTER_BY_ACTIVITY,FILTER_BY_CONTINENT, CLEAN_COUNTRIES} from './action-types'
 
 
 const initialState = {
@@ -26,6 +25,12 @@ const reducer = (state = initialState, action) => {
                 countries: action.payload,
                 allCountries: action.payload
             };
+        case CLEAN_COUNTRIES:
+            return {
+                ...state,
+                countries: [],
+                allCountries: []
+            }
         case POST_ACTIVITY:
             return {
                 ...state,

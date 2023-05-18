@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.container button{
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 15px;
+    height: 20px;
+    width: 60px;
+    text-transform: uppercase;
+    font-weight: bold;
+
+}
+
+.container button:hover{
+    cursor: pointer;
+    background: rgb(79, 76, 76);
+    color: white
+}
+
+.container button:disabled{
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+
+.container span{
+    font-weight: bold;
+}

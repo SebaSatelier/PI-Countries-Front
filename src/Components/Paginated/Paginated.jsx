@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { nextPage,prevPage } from '../../Redux/countryActions'
+import style from './Paginated.module.css'
 
 const Paginated = () => {
     
@@ -24,7 +25,7 @@ const handleDisableNextButton = (currentPage) => {
 }
     
 return (
-        <div>
+        <div className={style.container}>
             <button onClick={handlePage} name="prevPage" disabled = {handleDisablePrevButton(currentPage)}>Prev</button>
 
 

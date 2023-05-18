@@ -4,16 +4,21 @@
     align-items: center;
     height: 40px;
     margin: 10px;
-    border: black solid 1px
+    border-radius: 3px;
 }
+
 
 .Navbar button  {
     border: none;
     background: none;
+    padding: 8px;
+    margin: 3px;
+    border-radius: 4px;
 
 }
 
 .Navbar button:hover{
-    background-color: gray;
+    background-color: rgb(79, 76, 76);
     cursor: auto;
+    color: white;
 }

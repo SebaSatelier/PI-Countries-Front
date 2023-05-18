@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState,useEffect } from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams, NavLink} from 'react-router-dom';
 import {URL} from '../../Utils/Utils'
+import style from './Details.module.css'
 
 const Details = () => {
 const {id} = useParams()
@@ -21,15 +22,33 @@ useEffect(()=>{
 },[id])    
 
 return (
-        <div>
-            <p>{country.id}</p>
-            <p>{country.name}</p>
-            <img src={country.flag}/>
-            <p>{country.continent}</p>
-            <p>{country.capital}</p>
-            <p>{country.subregion}</p>
-            <p>{country.area}</p>
-            <p>{country.population}</p>
+        <div className={style.container}>
+            <div>
+                <NavLink to="/home"><button>BACK</button></NavLink>
+                <div id={style.detailContainer}>
+                    <br/>
+                    <h1>{country.name}</h1>
+                    <br/>
+                    <img src={country.flag} alt={country.name}/>
+                    <br />
+                    <div id={style.countryDetails}>
+                        <div>
+                            <h3>Continent:</h3>
+                            <h3>Subregion:</h3>
+                            <h3>Capital:</h3>
+                            <h3>Area:</h3>
+                            <h3>Population:</h3>
+                        </div>
+                        <div>
+                            <h3>{country.continent}</h3>
+                            <h3>{country.subregion}</h3>
+                            <h3>{country.capital}</h3>
+                            <h3>{country.area}</h3>
+                            <h3>{country.population}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

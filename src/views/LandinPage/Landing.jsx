@@ -15,8 +15,9 @@ const Landing = ({login}) => {
                                         SING UP
                                     </button>}
 
-
-                    {openRegister && <Register setOpenRegister={setOpenRegister}/>}
+                        <div>
+                            {openRegister && <Register className={style.SingIn} setOpenRegister={setOpenRegister}/>}
+                        </div>
                     </div>
 
 

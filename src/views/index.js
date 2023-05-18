@@ -2,13 +2,13 @@ import Landing from './LandinPage/Landing';
 
 import Home from './Home/Home';
 
-import Form from './Form/Form';
+import ActivitiesForm from './ActivitiesForm/ActivitiesForm';
 
 import Details from './Details/Details';
 
 export { 
     Landing,
     Home,
-    Form,
+    ActivitiesForm,
     Details
 }

@@ -4,6 +4,8 @@ export const GET_COUNTRY_BY_ID = "GET_COUNTRY_BY_ID";
 
 export const GET_COUNTRY_BY_NAME = "GET_COUNTRY_BY_NAME";
 
+export const CLEAN_COUNTRIES = "CLEAN_COUNTRIES";
+
 export const POST_ACTIVITY = "POST_ACTIVITY";
 
 export const GET_ACTIVITIES = "GET_ACTIVITIES";

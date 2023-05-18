@@ -23,7 +23,6 @@ const OrderAndFilter = ()=>{
 
     let allActivities = allCountries.map(country => country.activities).flat().map(activity => activity?.name)
    
-
     let activities = allActivities.filter((value, index) => allActivities.indexOf(value) === index);
 
 return(
@@ -41,7 +40,7 @@ return(
 
 
                 <div>
-                    <p>Filter by continent: </p>
+                    <p>Continent: </p>
                     <select onChange={handleContinentFilter}>
                         <option value="Africa">Africa</option>
                         <option value="Americas">Americas</option>
@@ -54,7 +53,7 @@ return(
                 </div>
 
                 <div>
-                    <p>Filter by activity: </p>
+                    <p>Activity: </p>
                     <select onChange={handleActivityFilter}>
                         <option value="All">All</option>
                         {activities.map(activity => {

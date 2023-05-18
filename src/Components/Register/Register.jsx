@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios'
 import {loginValidation} from '../../Utils/Validation';
-import {URL} from '../../Utils/Utils'
+import {URL} from '../../Utils/Utils';
+import style from './Register.module.css'
 
 
 
@@ -34,10 +35,11 @@ const Register = ({setOpenRegister}) => {
     const singIn = async (newUser) => {
         try{
           const {data} = await axios.post(`${URL}/user/register`, newUser);
-          setNewUser({...newUser, email: "", password: ""})
           alert(data)
         }catch(error){
           return error.message
+        }finally{
+          setNewUser({...newUser, email: "", password: ""})
         }
       }
 
@@ -50,21 +52,32 @@ const Register = ({setOpenRegister}) => {
   
 
     return (
-        <div>
-          <h2>Sing in</h2>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email:</label>
-            <input type="email" name="email" value={newUser.email} placeholder='Ingrese su email' onChange={handleChange}/>
-            {errors.email && <p>{errors.email}</p>}
+          <form onSubmit={handleSubmit} className={style.form}>
+            <h2>REGISTER</h2>
+            <div>
+              <label htmlFor="email">Email</label>
+            </div>
 
-            <label htmlFor="password">Password:</label>
-            <input type="password" name="password" value={newUser.password} placeholder='Ingrese su password' onChange={handleChange}/>
-            {errors.password && <p>{errors.password}</p>}
+            <div>
+              <input type="email" name="email" value={newUser.email} placeholder='Enter your email' onChange={handleChange}/>
+              {errors.email && <p>{errors.email}</p>}
+            </div>
             
-            <button type="submit" disabled={buttonDisable(newUser,errors)}>Sing up</button>
-          </form>
-          <button onClick={() => setOpenRegister(false)} >Close</button>
-        </div>
+            <div>
+              <label htmlFor="password">Password:</label>
+            </div>
+            <div>
+              <em>(6 - 30 characters and 1 number)</em>
+            </div>
+
+            <div>
+              <input type="password" name="password" value={newUser.password} placeholder='Enter your password' onChange={handleChange}/>
+              {errors.password && <p>{errors.password}</p>}
+            </div>
+              
+              <button type="submit" disabled={buttonDisable(newUser,errors)}>Sing up</button>
+              <button type="button" onClick={() => setOpenRegister(false)} >Close</button>
+            </form>
     )
 }
 

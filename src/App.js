@@ -1,12 +1,15 @@
 import {Route, Routes, useLocation,useNavigate} from 'react-router-dom';
 import './App.css';
-import {Landing, Home, Details, Form} from './views';
+import {Landing, Home, Details, ActivitiesForm} from './views';
 import { NavBar } from './Components';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import {URL} from './Utils/Utils';
+import { useDispatch } from 'react-redux';
+import { cleanCountries, getAllCountries } from './Redux/countryActions';
 
 function App() {
+  const dispatch = useDispatch()
 
   const location = useLocation()
 
@@ -19,14 +22,16 @@ function App() {
           const {data} = await axios.post(`${URL}/user/login`, userData);
           const access = data.access
           setAccess(access);
+          dispatch(getAllCountries())
           access && navigate('/home')
            // recuperarFavoritos()
         }catch(error){
-          return error.message
+          return alert(error.message)
         }
   }
 
     const logOut = () => {
+      dispatch(cleanCountries())
       setAccess(false)
   }
 
@@ -45,7 +50,7 @@ function App() {
 
           <Route path="/favorites" />
 
-          <Route path="/activities" element={<Form/>}/> 
+          <Route path="/activities" element={<ActivitiesForm/>}/> 
 
           <Route path='/detail/:id' element= {<Details/>}/>
 

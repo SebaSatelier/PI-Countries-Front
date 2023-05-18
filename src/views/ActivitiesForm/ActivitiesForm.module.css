@@ -1,0 +1,173 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    background: linear-gradient(135deg, rgba(236, 248, 248, 0.7), rgba(238, 228, 225, 0.7), rgba(231, 216, 201, 0.7));
+    background-size: 500%;
+    animation: fondoanimado 5s infinite;
+  }
+
+@keyframes fondoanimado {
+  0%{
+    background-position: 0% 50%;
+  }
+  
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+.container > div{
+  background-image: url(../../Utils/Images/Imagen12.png);
+  background-size: cover;
+  width: 40%;
+  height: 100vh;
+}
+
+.container h1 {
+  text-transform: uppercase;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 29%;
+  height: 85vh;
+  margin-top: 2%;
+  margin-left: 15%;
+}
+
+.container > form div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container >form >div p{
+  color: red;
+  font-weight: bold;
+}
+.container > form >div div{
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%
+}
+
+.container > form >div >div input{
+  width: 65%;
+}
+
+.container > form >div >div select{
+  width: 66%;
+  height: 35px;
+  border: black solid 1.5px;
+  border-radius: 5px;
+}
+
+#button {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  text-transform: lowercase;
+}
+.container >form >div button{
+  background-color: white;
+  border: none;
+  margin-bottom: 2%;
+  border-radius: 5px;
+  font-size: 18px;
+  height: 35px;
+  width: 150px;
+  text-transform: uppercase;
+  font-weight: bold;
+
+}
+
+.container > form >div button:hover{
+  cursor: pointer;
+  background: rgb(79, 76, 76);
+  color: white
+}
+
+.container > form >div button:disabled{
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+#countryContainer{
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  height: 130px;
+}
+
+#addCountryButton{
+  background-color: white;
+  border: none;
+  margin-bottom: 2%;
+  border-radius: 5px;
+  font-size: 10px;
+  height: 25px;
+  width: 50px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#addCountryButton:hover{
+  background-color: rgb(79, 76, 76);
+  cursor: pointer;
+  color: white
+}
+
+#selectedCountry{
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 20px;
+  width: 360px;
+  font-size: 15px;
+}
+
+#deleteButton {
+  background-color: white;
+  border: none;
+  margin-left: 5px;
+  margin-top: 6px;
+  border-radius: 5px;
+  font-size: 10px;
+  height: 18px;
+  width: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#deleteButton:hover{
+  background-color: rgb(79, 76, 76);
+  cursor: pointer;
+  color: white
+}
+

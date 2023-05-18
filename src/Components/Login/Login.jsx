@@ -4,6 +4,7 @@ import style from './Login.module.css'
 
 const Login = ({login}) => {
 
+
     const [userData, setUserData] = useState({
         email : '',
         password : ''
@@ -39,8 +40,8 @@ const Login = ({login}) => {
     return(
 
             <form onSubmit={handleSubmit} className={style.form}>
-                <h3>Please, enter your credencials</h3>
-                <div >
+                <h2>ADMISSION</h2>
+                <div>
                     <label htmlFor="email">Email</label>
                 </div>
 
@@ -58,9 +59,8 @@ const Login = ({login}) => {
                     {errors.password && <p>{errors.password}</p>}
                 </div>
 
-                <button disabled={buttonDisable(userData,errors)}>Sing in</button>
+                <button disabled={buttonDisable(userData,errors)} >enter</button>
 
-                <h3>or</h3>
             </form>
 
     )
