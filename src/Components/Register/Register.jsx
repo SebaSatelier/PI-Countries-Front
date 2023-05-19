@@ -6,7 +6,8 @@ import style from './Register.module.css'
 
 
 
-const Register = ({setOpenRegister}) => {
+const Register = ({setOpenRegister, login}) => {
+
     const [newUser, setNewUser] = useState({
         email: '',
         password: ''
@@ -16,6 +17,17 @@ const Register = ({setOpenRegister}) => {
         email : '',
         password : ''
      })
+
+     const [response, setResponse] = useState('')
+
+     const [created, setCreated] = useState(false)
+
+     const [userData, setUserData] = useState({
+        email: '',
+        password: ''
+     })
+
+
 
      const handleChange = (event) => {
         setNewUser({...newUser,
@@ -35,9 +47,11 @@ const Register = ({setOpenRegister}) => {
     const singIn = async (newUser) => {
         try{
           const {data} = await axios.post(`${URL}/user/register`, newUser);
-          alert(data)
+          setResponse(data.user)
+          setUserData(newUser)
+          setCreated(true)
         }catch(error){
-          return error.message
+          setResponse(error.response.data.error)
         }finally{
           setNewUser({...newUser, email: "", password: ""})
         }
@@ -49,10 +63,17 @@ const Register = ({setOpenRegister}) => {
         if(errors.email || errors.password) disable = true;
         return disable
     }
+
+    const handleMessage = () => {
+      setResponse("")
+      created && login(userData)
+    }
   
 
     return (
-          <form onSubmit={handleSubmit} className={style.form}>
+          <div className={style.container}>
+
+            {!response && <form onSubmit={handleSubmit} className={style.form}>
             <h2>REGISTER</h2>
             <div>
               <label htmlFor="email">Email</label>
@@ -77,7 +98,12 @@ const Register = ({setOpenRegister}) => {
               
               <button type="submit" disabled={buttonDisable(newUser,errors)}>Sing up</button>
               <button type="button" onClick={() => setOpenRegister(false)} >Close</button>
-            </form>
+            </form>}
+              {response && <div className={style.response}>
+                            <h2>{response}</h2> 
+                            <button onClick={handleMessage}>OK</button>
+                          </div>}
+          </div>
     )
 }
 

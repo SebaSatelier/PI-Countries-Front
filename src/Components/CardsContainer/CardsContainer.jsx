@@ -18,7 +18,7 @@ const CardsContainer = () => {
                 key={country.id}
                 id={country.id}
                 name={country.name}
-                flag={country.flag}
+                flag={country?.flag[1]}
                 continent={country.continent}
                 />
 

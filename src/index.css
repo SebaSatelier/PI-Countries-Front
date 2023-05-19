@@ -6,6 +6,7 @@
 body {
     background-image: url(./Utils/Images/tumblr_o17wxxtgWv1v4obbzo1_1280.jpg);
     background-size: cover;
+    height: 100vh;
 }
 
 

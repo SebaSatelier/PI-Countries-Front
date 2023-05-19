@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {loginValidation} from '../../Utils/Validation'
 import style from './Login.module.css'
 
-const Login = ({login}) => {
+const Login = ({login, response, setResponse}) => {
 
 
     const [userData, setUserData] = useState({
@@ -14,6 +14,8 @@ const Login = ({login}) => {
         email : '',
         password : ''
      })
+
+     
 
      const handleChange = (event) => {
         setUserData({...userData,
@@ -37,8 +39,12 @@ const Login = ({login}) => {
         return disable
      } 
 
-    return(
+     useEffect(()=>{
+        setResponse("")
+     },[])
 
+    return(
+        <div>
             <form onSubmit={handleSubmit} className={style.form}>
                 <h2>ADMISSION</h2>
                 <div>
@@ -62,7 +68,10 @@ const Login = ({login}) => {
                 <button disabled={buttonDisable(userData,errors)} >enter</button>
 
             </form>
-
+            {response && <div className={style.response}>
+                            <h2>{response}</h2> 
+                          </div>}
+        </div>
     )
 }
 

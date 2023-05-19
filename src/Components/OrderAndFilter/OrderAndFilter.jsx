@@ -1,4 +1,4 @@
-import {orderCountry, filterContinentCountry, filterActivityCountry} from '../../Redux/countryActions'
+import {orderCountry, filterContinentCountry, filterActivityCountry, resetPage, getAllCountries} from '../../Redux/countryActions'
 import { useDispatch, useSelector } from 'react-redux';
 import style from './OrderAndFilter.module.css'
 
@@ -12,11 +12,13 @@ const OrderAndFilter = ()=>{
 
     const handleContinentFilter = (event) =>{
         dispatch(filterContinentCountry(event.target.value))
+        dispatch(resetPage())
     };
 
 
     const handleActivityFilter = (event) => {
         dispatch(filterActivityCountry(event.target.value))
+        dispatch(resetPage())
     };
 
     const {allCountries} = useSelector(state=> state)
@@ -60,6 +62,7 @@ return(
                             return <option key={activity} value={activity}>{activity}</option>
                             })}
                     </select>
+                    <button type="button" onClick={() => dispatch(getAllCountries())}>Reset Filter</button>
                 </div>
         </div>
     )

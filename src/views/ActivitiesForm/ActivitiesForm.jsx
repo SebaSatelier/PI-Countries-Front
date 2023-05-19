@@ -1,17 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {formValidation} from '../../Utils/Validation'
+import {getAllCountries} from '../../Redux/countryActions'
 import {URL} from '../../Utils/Utils'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import style from './ActivitiesForm.module.css'
 
 const ActivitiesForm = () => {
 
+    const dispatch = useDispatch()
+
     const {allCountries} = useSelector(state => state);
 
     const [selectedCountry, setSelectedCountry] = useState('');
 
-    const [resetSelect, setResetSelect] = useState(false);
 
     const [activityData, setActivityData] = useState({
         name : '',
@@ -64,9 +66,10 @@ const ActivitiesForm = () => {
     }
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        postActivity(activityData)
+        await postActivity(activityData)
+        dispatch(getAllCountries())
      }
 
      const buttonDisable = (activityData,errors) => {
@@ -82,8 +85,6 @@ const ActivitiesForm = () => {
         setActivityData({...activityData,
             country: [...activityData.country, selectedCountry]})
         setSelectedCountry("")
-        setResetSelect(true);
-        console.log(activityData.country);
         }
      }
 
@@ -92,13 +93,6 @@ const ActivitiesForm = () => {
         country: activityData.country.filter(country => country !== event.target.value)})
         console.log(activityData.country);
      }
-
-     useEffect(() => {
-        if (resetSelect) {
-          setSelectedCountry("");
-          setResetSelect(false);
-        }
-      }, [resetSelect]);
 
      let availableCountries = allCountries.filter(country => !activityData.country.includes(country?.name))
 

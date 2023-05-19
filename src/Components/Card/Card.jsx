@@ -6,7 +6,7 @@ const Card = ({id,name,flag,continent}) => {
         <NavLink to={`/detail/${id}`} className={style.navlink}>
             <div className={style.container}>
                 <div>
-                    <img src={flag}/>
+                    <img src={flag} alt={name}/>
                     <p>{name}</p>
                 </div>
                 <p>{continent}</p>

@@ -1,6 +1,6 @@
 import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME,
 POST_ACTIVITY, GET_ACTIVITIES, DELETE_ACTIVITY, UPDATE_ACTIVITY, NEXT_PAGE,PREV_PAGE,
-ORDER,FILTER_BY_ACTIVITY,FILTER_BY_CONTINENT, CLEAN_COUNTRIES} from './action-types'
+ORDER,FILTER_BY_ACTIVITY,FILTER_BY_CONTINENT, CLEAN_COUNTRIES, RESET_PAGE} from './action-types'
 
 
 const initialState = {
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 countries: [],
                 allCountries: []
-            }
+            };
         case POST_ACTIVITY:
             return {
                 ...state,
@@ -61,6 +61,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 currentPage: state.currentPage -1
             };
+        case RESET_PAGE: 
+            return{
+                ...state,
+                currentPage: 1
+            }
         case ORDER:
             const countriesCopy = [...state.countries]
             if(action.payload !== "A" && action.payload !== "Z"){

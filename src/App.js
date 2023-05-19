@@ -17,6 +17,8 @@ function App() {
 
   const [access,setAccess] = useState(false)
 
+  const [response, setResponse] = useState('')
+
     const login = async (userData) => {
         try{
           const {data} = await axios.post(`${URL}/user/login`, userData);
@@ -26,7 +28,7 @@ function App() {
           access && navigate('/home')
            // recuperarFavoritos()
         }catch(error){
-          return alert(error.message)
+          setResponse(error.response.data.error)
         }
   }
 
@@ -46,7 +48,7 @@ function App() {
 
         <Routes>
 
-          <Route exact path="/" element={<Landing login={login}/>}/>
+          <Route exact path="/" element={<Landing login={login} response={response} setResponse= {setResponse}/>}/>
 
           <Route path="/favorites" />
 

@@ -1,5 +1,5 @@
 import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, ORDER,
-    FILTER_BY_ACTIVITY,FILTER_BY_CONTINENT, CLEAN_COUNTRIES} from './action-types'
+    FILTER_BY_ACTIVITY,FILTER_BY_CONTINENT, CLEAN_COUNTRIES, RESET_PAGE} from './action-types'
 import axios from "axios"
 import {URL} from '../Utils/Utils'
 
@@ -48,6 +48,12 @@ export const nextPage = () => {
 export const prevPage = () => {
     return {
         type: PREV_PAGE
+    }
+}
+
+export const resetPage = () => {
+    return {
+        type: RESET_PAGE
     }
 }
 

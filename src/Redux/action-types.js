@@ -18,6 +18,8 @@ export const NEXT_PAGE = "NEXT_PAGE";
 
 export const PREV_PAGE = "PREV_PAGE";
 
+export const RESET_PAGE = "RESET_PAGE"
+
 export const ORDER = "ORDER";
 
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";

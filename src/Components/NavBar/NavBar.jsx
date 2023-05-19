@@ -3,7 +3,7 @@ import {SearchBar} from '../index'
 import style from './NavBar.module.css'
 
 
-const NavBar = () => {
+const NavBar = ({logOut}) => {
     return (
         <nav className={style.Navbar}>
             <div>
@@ -21,7 +21,7 @@ const NavBar = () => {
 
                 <Link to='/about'><button>ABOUT</button></Link>
 
-                <Link to='/'><button>LOGOUT</button></Link>
+                <button onClick={logOut}>LOGOUT</button>
             </div>
         </nav>
     )
