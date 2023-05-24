@@ -1,5 +1,5 @@
 import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, ORDER,
-    FILTER_BY_ACTIVITY,FILTER_BY_CONTINENT, CLEAN_COUNTRIES, RESET_PAGE} from './action-types'
+    FILTER_BY_ACTIVITY,FILTER_BY_CONTINENT, RESET_PAGE, RESET_FILTER} from './action-types'
 import axios from "axios"
 import {URL} from '../Utils/Utils'
 
@@ -33,47 +33,53 @@ export const getCountryByName = (name) => {
     }
 }
 
-export const cleanCountries = () =>{
+export const nextPage = (location) => {
     return {
-        type: CLEAN_COUNTRIES,
+        type: NEXT_PAGE,
+        payload:location
     }
 }
 
-export const nextPage = () => {
+export const prevPage = (location) => {
     return {
-        type: NEXT_PAGE
+        type: PREV_PAGE,
+        payload: location
     }
 }
 
-export const prevPage = () => {
+export const resetPage = (location) => {
     return {
-        type: PREV_PAGE
+        type: RESET_PAGE,
+        payload:location
     }
 }
 
-export const resetPage = () => {
-    return {
-        type: RESET_PAGE
-    }
-}
-
-export const orderCountry = (order) => {
+export const orderCountry = (location, order) => {
     return {
         type: ORDER,
-        payload: order
+        payload: order,
+        location:location
     }
 }
 
-export const filterContinentCountry = (continent) => {
+export const filterContinentCountry = (location,continent) => {
     return {
         type: FILTER_BY_CONTINENT,
-        payload: continent
+        payload: continent,
+        location:location
     }
 }
 
-export const filterActivityCountry = (activity) => {
+export const filterActivityCountry = (location,activity) => {
     return {
         type: FILTER_BY_ACTIVITY,
-        payload: activity
+        payload: activity,
+        location:location
+    }
+}
+export const resetFilter = (location)=>{
+    return {
+        type: RESET_FILTER,
+        payload: location
     }
 }

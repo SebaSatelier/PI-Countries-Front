@@ -4,20 +4,29 @@
     align-items: center;
     height: 40px;
     margin: 10px;
+    width: 100%;
     border-radius: 3px;
 }
 
+.selectButton{
+    border: none;
+    padding: 8px;
+    margin: 3px;
+    border-radius: 4px;
+    background-color: rgb(79, 76, 76);
+    cursor: auto;
+    color: white;
+}
 
-.Navbar button  {
+.navBarButton {
     border: none;
     background: none;
     padding: 8px;
     margin: 3px;
     border-radius: 4px;
-
 }
 
-.Navbar button:hover{
+.navBarButton:hover{
     background-color: rgb(79, 76, 76);
     cursor: auto;
     color: white;

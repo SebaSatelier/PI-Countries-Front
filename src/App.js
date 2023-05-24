@@ -1,12 +1,14 @@
 import {Route, Routes, useLocation,useNavigate} from 'react-router-dom';
 import './App.css';
-import {Landing, Home, Details, ActivitiesForm} from './views';
+import {Landing, Home, Details, ActivitiesForm, Favorites} from './views';
 import { NavBar } from './Components';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import {URL} from './Utils/Utils';
 import { useDispatch } from 'react-redux';
-import { cleanCountries, getAllCountries } from './Redux/countryActions';
+import {getAllCountries } from './Redux/countryActions';
+import {getUserData, recFav, log_Out} from './Redux/userActions'
+import {getActivities} from './Redux/activityActions'
 
 function App() {
   const dispatch = useDispatch()
@@ -25,15 +27,17 @@ function App() {
           const access = data.access
           setAccess(access);
           dispatch(getAllCountries())
+          dispatch(getUserData(data.userData))
           access && navigate('/home')
-           // recuperarFavoritos()
+          dispatch(recFav(data.userData.id))
+          dispatch(getActivities())
         }catch(error){
           setResponse(error.response.data.error)
         }
   }
 
     const logOut = () => {
-      dispatch(cleanCountries())
+      dispatch(log_Out())
       setAccess(false)
   }
 
@@ -50,7 +54,7 @@ function App() {
 
           <Route exact path="/" element={<Landing login={login} response={response} setResponse= {setResponse}/>}/>
 
-          <Route path="/favorites" />
+          <Route path="/favorites" element={<Favorites />}/>
 
           <Route path="/activities" element={<ActivitiesForm/>}/> 
 

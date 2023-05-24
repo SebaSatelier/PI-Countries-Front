@@ -2,6 +2,8 @@ const regexpEmail = /^[^@]+@[^@]+\.[^@]+$/;
 
 const regexpPassword = /^(?=.*\d)(?=.*[a-zA-Z]).{6,10}$/;
 
+const regexpURL = /^(http|https):\/\/[^ "]+$/;
+
 
 
 const loginValidation = (input)=>{
@@ -15,6 +17,8 @@ const loginValidation = (input)=>{
 const formValidation = (input=undefined, state=undefined)=>{
     const errors = {}
         if(!input.name) errors.name = `Field can't be empty`;
+        if(!input.image) errors.image = `Field can't be empty`;
+        if(input.image && !regexpURL.test(input.image)) errors.image = `enter a valid url`;
         if(input.dificulty < 1 || input.dificulty > 5)  {
             errors.dificulty = `Difficulty must be between 1 and 5`;
         } 

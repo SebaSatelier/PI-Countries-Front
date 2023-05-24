@@ -85,6 +85,7 @@
 #activitiesDetails{
     background-image: url('../../Utils/Images/kayak.jpg');
     background-size: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     height: 93vh;
     width: 105vh;
     display: flex;

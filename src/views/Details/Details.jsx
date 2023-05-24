@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState,useEffect } from 'react';
-import { useParams, NavLink} from 'react-router-dom';
+import { useParams, NavLink, useLocation} from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { getActivities } from "../../Redux/activityActions";
 import {URL} from '../../Utils/Utils'
 import style from './Details.module.css'
 
@@ -10,10 +12,14 @@ const {id} = useParams()
 
 const [country, setCountry] = useState({})
 
+const dispatch = useDispatch()
+
 
 const [selectedActivity, setSelectedActivity] = useState('');
 
 const [activityData, setActivityData] = useState([])
+
+const [response, setResponse] = useState("")
 
 
 const detail = async () => {
@@ -25,8 +31,19 @@ const detail = async () => {
 
 const handleActivityChange = (event) => {
     setSelectedActivity(event.target.value)
-    setActivityData(country?.activities?.filter(activity => activity.name === selectedActivity))
-    console.log(activityData);
+}
+
+const deleteActivity = async (activityId, countryId)=>{
+    try{
+        const {data} = await axios.delete(`${URL}/activities`, {data: {activityId, countryId}})
+        dispatch(getActivities())
+        detail()
+        return setResponse(data.activity);
+    } catch (error) {
+      return setResponse(error.response.data.error);
+    } finally {
+        setSelectedActivity("")
+    }
 }
 
 useEffect(()=>{
@@ -35,8 +52,7 @@ useEffect(()=>{
 },[id])
 
 useEffect(()=>{
-    if(setActivityData)
-    setActivityData(country?.activities?.filter(activity => activity.name === selectedActivity))
+    setActivityData(country?.activities?.find(activity => activity.id === Number(selectedActivity)))
 },[selectedActivity])
 
 
@@ -54,7 +70,7 @@ return (
                         <div id={style.countryDetails}>
                             <h3><span style={{margin: '0 35px'}} >ID:</span><span style={{margin: '0 78px'}} >{country.id}</span></h3>
                             <h3><span style={{margin: '0 35px'}} >Continent:</span><span style={{margin: '0 19px'}} >{country.continent}</span></h3>
-                            <h3><span style={{margin: '0 35px'}} >Subregion:</span>{<span style={{margin: '0 17px'}} >{country.subregion}</span> && <span style={{margin: '0 17px'}}><em>N/A</em></span>}</h3>
+                            <h3><span style={{margin: '0 35px'}} >Subregion:</span>{(country.subregion)?<span style={{margin: '0 17px'}} >{country.subregion}</span> : <span style={{margin: '0 17px'}}><em>N/A</em></span>}</h3>
                             <h3><span style={{margin: '0 35px'}} >Capital:</span><span style={{margin: '0 39px'}} >{country.capital}</span></h3>
                             <h3><span style={{margin: '0 35px'}} >Area:</span><span style={{margin: '0 59px'}} >{country.area}</span></h3>
                             <h3><span style={{margin: '0 35px'}} >Population:</span><span style={{margin: '0 10px'}} >{country.population}</span></h3>
@@ -66,20 +82,18 @@ return (
                 <select name="activity" id="" value={selectedActivity} onChange={handleActivityChange}>
                     <option disabled value="">Select an option</option>
                     {country?.activities?.map(activity => {
-                        return <option key={activity.id} value={activity.name}>{activity.name}</option>
+                        return <option key={activity.id} value={activity.id}>{activity.name}</option>
                     })}
                 </select>
                 <div id={style.activitiesDetailsContainer}>
-                    {activityData?.map(activity => {
-                        return <div id={style.activityData} >
-                                <h3>Activity id: {activity?.activityId}</h3>
-                                <h3>Activity name: {activity?.name}</h3>
-                                <h3>Dificulty level: {activity?.dificulty}</h3>
-                                <h3>Duration time: {activity?.duration} hours</h3>
-                                <h3>Season to practice: {activity?.season}</h3>
-
+                    {activityData && <div id={style.activityData} >
+                                <h3>Activity name: {activityData?.name}</h3>
+                                <h3>Dificulty level: {activityData?.dificulty}</h3>
+                                <h3>Duration time: {activityData?.duration} hours</h3>
+                                <h3>Season to practice: {activityData?.season}</h3>
+                                <button onClick={()=> deleteActivity(activityData.id,country.id)}>Delete</button>
                             </div>   
-                    })}
+                    }
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
-.Home {
+.Favorites {
     position: relative;
 
 }
-.Home::before {
+.Favorites::before {
     content: "";
     position: absolute;
     top: 0;

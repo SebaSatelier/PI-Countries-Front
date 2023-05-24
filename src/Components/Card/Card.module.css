@@ -4,13 +4,12 @@
         align-items: center;
         justify-content: space-between;
         width: 240px;
-        height: 250px;
+        height: 255px;
         border-radius: 15px;
         margin-left: 15px;
         margin-top: 0px;
-        margin-bottom: 25px;
+        margin-bottom: 8px;
         color: black;
-        transition: box-shadow 0.3s ease;
     }
 
 .container:hover{
@@ -32,4 +31,10 @@
 
 .navlink{
     text-decoration: none;
+}
+
+.favButton{
+    background: none;
+    border: none;
+    height: 5px;
 }

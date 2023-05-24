@@ -6,7 +6,9 @@ import Login from './Login/Login'
 import Register from "./Register/Register";
 import OrderAndFilter from "./OrderAndFilter/OrderAndFilter";
 import Paginated from "./Paginated/Paginated";
+import FormCreateActivity from "./FormCreateActivity/FormCreateActivity";
+import FormEditActivity from "./FormEditActivity/FormEditActivity";
 
 
 
-export {NavBar, CardsContainer,Card, SearchBar, Login, Register, OrderAndFilter, Paginated};
+export {NavBar, CardsContainer,Card, SearchBar, Login, Register, OrderAndFilter, Paginated, FormCreateActivity, FormEditActivity};

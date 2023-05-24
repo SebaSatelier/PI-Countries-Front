@@ -3,3 +3,13 @@ input{
     width: 300px;
     border-radius: 5px;
 }
+
+input:disabled{
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+button:disabled{
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }

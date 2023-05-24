@@ -5,7 +5,7 @@ import {useLocation} from 'react-router-dom';
 import style from './SearchBar.module.css'
 
 
-const SearchBar = () => {
+const SearchBar = ({style}) => {
     // ESTADO LOCAL PARA MANEJAR EL INPUT DE LA SEARCHBAR 
     let [name,setName] = useState("");
 
@@ -17,7 +17,7 @@ const SearchBar = () => {
     //FUNCION PARA MANEJAR EL CAMBIO EN EL INPUT Y ENVIARLO 
     const handleChange = (event) =>{
         setName(event.target.value)
-        onSearch(name)
+        // onSearch(name)
     }
     //FUNCION ONSEARCH, PARA ENVIAR EL DISPATCH DE LA ACTION CUANDO SE BUSCA UN PAIS
     const onSearch = (name) => {
@@ -27,8 +27,9 @@ const SearchBar = () => {
   }
     return (
         <div className={style}>
-         <input type='search' onChange = {handleChange}  value={name} placeholder="Search a country"/>
-         <button onClick={() => {onSearch(name); setName('')}} disabled={(location.pathname !== '/about' && location.pathname !== '/favorites') ? false:true}>SEARCH</button>
+         <input type='search' onChange = {handleChange}  value={name} placeholder="Search a country" disabled={(location.pathname === "/home") ? false:true}/>
+         <button className={style.navBarButton} onClick={() => {onSearch(name); setName('')}} disabled={(location.pathname === "/home") ? false:true}>SEARCH</button>
+         <button className={style.navBarButton} onClick={() => {onSearch(""); setName('')}} disabled={(location.pathname === "/home") ? false:true}>RESET</button>
       </div>
     )
 }

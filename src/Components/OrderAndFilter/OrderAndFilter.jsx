@@ -1,37 +1,39 @@
-import {orderCountry, filterContinentCountry, filterActivityCountry, resetPage, getAllCountries} from '../../Redux/countryActions'
+import {orderCountry, filterContinentCountry, filterActivityCountry, resetPage,
+     resetFilter} from '../../Redux/countryActions'
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import style from './OrderAndFilter.module.css'
 
 const OrderAndFilter = ()=>{
     const dispatch = useDispatch()
 
-    const handleOrder = (event) => {
-        dispatch(orderCountry(event.target.value))
+    const location = useLocation()
+
+    const handleOrder = (location, event) => {
+        dispatch(orderCountry(location.pathname, event.target.value))
     };
 
 
-    const handleContinentFilter = (event) =>{
-        dispatch(filterContinentCountry(event.target.value))
+    const handleContinentFilter = (location, event) =>{
+        dispatch(filterContinentCountry(location.pathname, event.target.value))
         dispatch(resetPage())
     };
 
 
-    const handleActivityFilter = (event) => {
-        dispatch(filterActivityCountry(event.target.value))
+    const handleActivityFilter = (location, event) => {
+        dispatch(filterActivityCountry(location.pathname, event.target.value))
         dispatch(resetPage())
     };
 
-    const {allCountries} = useSelector(state=> state)
-
-    let allActivities = allCountries.map(country => country.activities).flat().map(activity => activity?.name)
+    const {allActivities, activeActivityFilter, activeContinentFilter, activeFavActivityFilter, activeFavContFilter } = useSelector(state=> state)
    
-    let activities = allActivities.filter((value, index) => allActivities.indexOf(value) === index);
 
 return(
         <div className={style.OrderFilter}>   
                 <div>
                     <p>Order: </p>
-                    <select onChange={handleOrder}>
+                    <select onChange={(event)=>handleOrder(location, event)}>
+                        <option disabled value="">select</option>
                         <option value="A">A - Z</option>
                         <option value="Z">Z - A</option>
                         <option value="MIN">Population: Min - High</option>
@@ -43,26 +45,26 @@ return(
 
                 <div>
                     <p>Continent: </p>
-                    <select onChange={handleContinentFilter}>
+                    <select onChange={(event)=>handleContinentFilter(location, event)} value={(location.pathname === "/favorites")? activeFavContFilter : activeContinentFilter} >
+                        <option value="All">All countries</option>
                         <option value="Africa">Africa</option>
                         <option value="Americas">Americas</option>
                         <option value="Antarctic">Antartic</option>
                         <option value="Asia">Asia</option>
                         <option value="Europe">Europe</option>
                         <option value="Oceania">Ocenia</option>
-                        <option value="All">All countries</option>
                     </select>
                 </div>
 
                 <div>
                     <p>Activity: </p>
-                    <select onChange={handleActivityFilter}>
+                    <select onChange={(event)=>handleActivityFilter(location, event)} value={(location.pathname === "/favorites")? activeFavActivityFilter :activeActivityFilter}>
                         <option value="All">All</option>
-                        {activities.map(activity => {
-                            return <option key={activity} value={activity}>{activity}</option>
+                        {allActivities?.map(activity => {
+                            return <option key={activity.id} value={activity.name}>{activity.name}</option>
                             })}
                     </select>
-                    <button type="button" onClick={() => dispatch(getAllCountries())}>Reset Filter</button>
+                    <button type="button" onClick={() => dispatch(resetFilter(location.pathname))}>Reset Filter</button>
                 </div>
         </div>
     )
