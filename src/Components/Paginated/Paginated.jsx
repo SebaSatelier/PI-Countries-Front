@@ -46,14 +46,14 @@ useEffect(()=>{
     
 return (
         <div className={style.container}>
-            <button onClick={handlePage} name="prevPage" disabled = {handleDisablePrevButton(currentPage)}>Prev</button>
+            <button onClick={handlePage} name="prevPage" disabled = {handleDisablePrevButton(currentPage)}>{`< Prev`}</button>
 
 
             <span>{currentPage}</span>
 
 
 
-            <button onClick={handlePage} name="nextPage" disabled= {handleDisableNextButton(currentPage, currentCountries)}>Next</button>
+            <button onClick={handlePage} name="nextPage" disabled= {handleDisableNextButton(currentPage, currentCountries)}>{'Next >'}</button>
         </div>
     )    
 }

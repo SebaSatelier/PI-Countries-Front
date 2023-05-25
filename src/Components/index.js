@@ -10,5 +10,5 @@ import FormCreateActivity from "./FormCreateActivity/FormCreateActivity";
 import FormEditActivity from "./FormEditActivity/FormEditActivity";
 
 
-
-export {NavBar, CardsContainer,Card, SearchBar, Login, Register, OrderAndFilter, Paginated, FormCreateActivity, FormEditActivity};
+export {NavBar, CardsContainer,Card, SearchBar, Login, Register, OrderAndFilter, Paginated,
+     FormCreateActivity, FormEditActivity};

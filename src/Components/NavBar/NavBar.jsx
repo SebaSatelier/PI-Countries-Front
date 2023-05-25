@@ -20,8 +20,6 @@ const NavBar = ({logOut}) => {
             <SearchBar style={style}/>
             <div>
 
-                <Link to='/about'><button className={(location.pathname === '/about')?style.selectButton:style.navBarButton}>ABOUT</button></Link>
-
                 <button onClick={logOut} className={style.navBarButton}>LOGOUT</button>
             </div>
         </nav>

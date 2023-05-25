@@ -8,10 +8,13 @@ import Details from './Details/Details';
 
 import Favorites from './Favorites/Favorites';
 
+import Error from './Error/Error'
+
 export { 
     Landing,
     Home,
     ActivitiesForm,
     Details,
-    Favorites
+    Favorites,
+    Error
 }

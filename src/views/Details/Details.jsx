@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import { useParams, NavLink, useLocation} from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { getActivities } from "../../Redux/activityActions";
+import { getAllCountries, resetFilter } from "../../Redux/countryActions"; 
 import {URL} from '../../Utils/Utils'
 import style from './Details.module.css'
 
@@ -37,6 +38,8 @@ const deleteActivity = async (activityId, countryId)=>{
     try{
         const {data} = await axios.delete(`${URL}/activities`, {data: {activityId, countryId}})
         dispatch(getActivities())
+        dispatch(getAllCountries())
+        dispatch(resetFilter())
         detail()
         return setResponse(data.activity);
     } catch (error) {

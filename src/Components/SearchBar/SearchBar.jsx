@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { getCountryByName } from "../../Redux/countryActions";
+import { getCountryByName, resetPage } from "../../Redux/countryActions";
 import {useLocation} from 'react-router-dom';
 import style from './SearchBar.module.css'
 
@@ -22,6 +22,7 @@ const SearchBar = ({style}) => {
     //FUNCION ONSEARCH, PARA ENVIAR EL DISPATCH DE LA ACTION CUANDO SE BUSCA UN PAIS
     const onSearch = (name) => {
         dispatch(getCountryByName(name))
+        dispatch(resetPage(location))
         
   
   }
