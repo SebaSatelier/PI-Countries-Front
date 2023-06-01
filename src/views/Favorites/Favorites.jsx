@@ -14,7 +14,7 @@ const Favorites = () => {
 
         useEffect(()=>{
             setViewCountries(favorites?.slice(firstCountry,lastCountry))
-        },[favorites, currentFavPage])
+        },[favorites, currentFavPage, firstCountry, lastCountry])
 
 
         return (

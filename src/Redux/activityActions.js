@@ -1,4 +1,4 @@
-import {GET_ACTIVITIES, DELETE_ACTIVITY, UPDATE_ACTIVITY} from './action-types'
+import {GET_ACTIVITIES} from './action-types'
 import axios from "axios"
 import {URL} from '../Utils/Utils'
 

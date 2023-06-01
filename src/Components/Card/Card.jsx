@@ -29,9 +29,9 @@ const Card = ({id,name,flag,continent}) => {
         if (fav.id === id) {
            return setIsFav(true);
          }
-         return
+         return undefined
       });
-   }, [allFavorites]);
+   }, [id, allFavorites]);
     return (
     <div>
         

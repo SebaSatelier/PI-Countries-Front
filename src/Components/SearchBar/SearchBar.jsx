@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { getCountryByName, resetPage } from "../../Redux/countryActions";
 import {useLocation} from 'react-router-dom';
-import style from './SearchBar.module.css'
 
 
 const SearchBar = ({style}) => {
@@ -28,7 +27,7 @@ const SearchBar = ({style}) => {
   }
     return (
         <div className={style}>
-         <input type='search' onChange = {handleChange}  value={name} placeholder="Search a country" disabled={(location.pathname === "/home") ? false:true}/>
+         <input className={style.searchBar} type='search' onChange = {handleChange}  value={name} placeholder="Search a country" disabled={(location.pathname === "/home") ? false:true}/>
          <button className={style.navBarButton} onClick={() => {onSearch(name); setName('')}} disabled={(location.pathname === "/home") ? false:true}>SEARCH</button>
          <button className={style.navBarButton} onClick={() => {onSearch(""); setName('')}} disabled={(location.pathname === "/home") ? false:true}>RESET</button>
       </div>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState,useEffect } from 'react';
-import { useParams, NavLink, useLocation} from 'react-router-dom';
+import { useParams, NavLink} from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { getActivities } from "../../Redux/activityActions";
 import { getAllCountries, resetFilter } from "../../Redux/countryActions"; 
@@ -20,8 +20,6 @@ const [selectedActivity, setSelectedActivity] = useState('');
 
 const [activityData, setActivityData] = useState([])
 
-const [response, setResponse] = useState("")
-
 
 const detail = async () => {
     const {data} = await axios(`${URL}/countries/${id}`)
@@ -36,27 +34,32 @@ const handleActivityChange = (event) => {
 
 const deleteActivity = async (activityId, countryId)=>{
     try{
-        const {data} = await axios.delete(`${URL}/activities`, {data: {activityId, countryId}})
+        await axios.delete(`${URL}/activities`, {data: {activityId, countryId}})
         dispatch(getActivities())
         dispatch(getAllCountries())
         dispatch(resetFilter())
-        detail()
-        return setResponse(data.activity);
+        return detail()
     } catch (error) {
-      return setResponse(error.response.data.error);
+      return alert(error.response.data.error);
     } finally {
         setSelectedActivity("")
     }
 }
 
 useEffect(()=>{
+    const detail = async () => {
+        const {data} = await axios(`${URL}/countries/${id}`)
+        if(data.name){
+            setCountry(data)
+            }
+    }
     detail()
     return setCountry({})
 },[id])
 
 useEffect(()=>{
     setActivityData(country?.activities?.find(activity => activity.id === Number(selectedActivity)))
-},[selectedActivity])
+},[selectedActivity, country.activities])
 
 
 

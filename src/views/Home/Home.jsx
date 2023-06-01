@@ -14,7 +14,7 @@ const Home = () => {
 
     useEffect(()=>{
         setViewCountries(countries?.slice(firstCountry,lastCountry))
-    },[countries, currentHomePage])
+    },[countries, currentHomePage,firstCountry,lastCountry])
     return (
         <div className={style.Home}>
             <OrderAndFilter />

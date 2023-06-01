@@ -10,7 +10,7 @@ import axios from "axios";
 const FormEditActivity = ({ style }) => {
   const dispatch = useDispatch();
 
-  const { allCountries, userData, allActivities } = useSelector((state) => state); //Traer esos 3 estados del global
+  const { userData, allActivities } = useSelector((state) => state); //Traer esos 3 estados del global
 
   const [selectedActivity, setSelectedActivity] = useState(""); // Usado para saber que actividad selecciono el usuario y obtener sus datos
 
@@ -27,6 +27,15 @@ const FormEditActivity = ({ style }) => {
     season: "",
   });
 
+  // const [copySelectActivity, setCopySelectActivity] = useState({
+  //   id: "",
+  //   name: "",
+  //   image: "",
+  //   dificulty: "",
+  //   duration: "",
+  //   season: "",
+  // })
+
   const [errors, setErrors] = useState({ //Usado para manejar las validaciones de los input cuando se van modificando
     name: "",
     image: "",
@@ -37,7 +46,20 @@ const FormEditActivity = ({ style }) => {
 
   const handleSelect = (event) => { //Manejador del select
     setSelectedActivity(event.target.value);
+    // setCopySelectActivity(event.target.value)
   };
+
+
+  // const changeCheck =(activityData, copySelectActivity) => {
+  //   let response = false
+  //   for (const key in activityData) {
+  //     if (key.value === copySelectActivity)
+        
+  //     }
+  //   }
+    // if(activityData === copySelectActivity) response = true;
+    // return response
+  // }
 
   const handleChange = (event) => { //Manejador del los cambios realizados en los input y poder validarlos
     if (!event) return setActivityData({ ...activityData });
@@ -127,16 +149,16 @@ const FormEditActivity = ({ style }) => {
     const activity = allActivities?.find(
       (activity) => activity.id === +selectedActivity
     );
-    setActivityData({
-      ...activityData,
+    setActivityData((prevActivityData) => ({
+      ...prevActivityData,
       id: activity?.id,
       name: activity?.name,
       image: activity?.image,
       dificulty: activity?.dificulty,
       duration: activity?.duration,
       season: activity?.season,
-    });
-  }, [selectedActivity]);
+    }));
+  }, [selectedActivity, allActivities]);
 
 
   return (

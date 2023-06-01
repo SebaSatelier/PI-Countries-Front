@@ -31,3 +31,19 @@
     cursor: auto;
     color: white;
 }
+
+.searchBar{
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.searchBar:disabled{
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.searchBar:disabled{
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }

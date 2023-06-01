@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState,} from 'react'
 import {loginValidation} from '../../Utils/Validation'
 import style from './Login.module.css'
 
-const Login = ({login, response, setResponse}) => {
+const Login = ({login, response}) => {
 
 
     const [userData, setUserData] = useState({
@@ -37,11 +37,7 @@ const Login = ({login, response, setResponse}) => {
         if(!userData.email || !userData.password) disable = true;
         if(errors.email || errors.password) disable = true;
         return disable
-     } 
-
-     useEffect(()=>{
-        setResponse("")
-     },[])
+     }
 
     return(
         <div>

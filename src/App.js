@@ -1,6 +1,6 @@
 import {Route, Routes, useLocation,useNavigate} from 'react-router-dom';
 import './App.css';
-import {Landing, Home, Details, ActivitiesForm, Favorites , Error} from './views';
+import {Landing, Home, Details, ActivitiesForm, Favorites,} from './views';
 import { NavBar } from './Components';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -61,8 +61,6 @@ function App() {
           <Route path='/detail/:id' element= {<Details/>}/>
 
           <Route path="/home" element={<Home/>}/>
-
-          {/* <Route path=':error' element={<Error/>}/> */}
 
         </Routes>
     </div>
