@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/SebaSatelier/PI-Countries-Front/static/css/main.48ed23d0.css",
+    "main.js": "/SebaSatelier/PI-Countries-Front/static/js/main.3a3f8294.js",
+    "static/media/Imagen2.png": "/SebaSatelier/PI-Countries-Front/static/media/Imagen2.f1faf9b7543705a9e4e0.png",
+    "static/media/tumblr_o17wxxtgWv1v4obbzo1_1280.jpg": "/SebaSatelier/PI-Countries-Front/static/media/tumblr_o17wxxtgWv1v4obbzo1_1280.b78344ec609a3ef6d235.jpg",
+    "static/media/kayak.jpg": "/SebaSatelier/PI-Countries-Front/static/media/kayak.fdea602c49fdce80e0f1.jpg",
+    "index.html": "/SebaSatelier/PI-Countries-Front/index.html",
+    "main.48ed23d0.css.map": "/SebaSatelier/PI-Countries-Front/static/css/main.48ed23d0.css.map",
+    "main.3a3f8294.js.map": "/SebaSatelier/PI-Countries-Front/static/js/main.3a3f8294.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.48ed23d0.css",
+    "static/js/main.3a3f8294.js"
+  ]
+}
