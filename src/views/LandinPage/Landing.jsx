@@ -23,7 +23,7 @@ const Landing = ({login, response, setResponse}) => {
                         {!openRegister && <Login login= {login} response={response} setResponse={setResponse}/>}
 
                     {!openRegister && <button onClick={() => setOpenRegister(true)} className={style.buttonSingUp}>
-                                        SING UP
+                                        SIGN UP
                                     </button>}
 
                         <div>
